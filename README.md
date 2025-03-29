@@ -71,6 +71,10 @@ plt.legend()
 plt.title("Outliers in Data")
 plt.show()
 ```
-
-
+```Method	Pros	Cons
+Z-score	Works well for normally distributed data	Sensitive to extreme values, not ideal for skewed data
+IQR	Works well for skewed distributions	Less effective for small datasets
+Boxplot	Easy to visualize	Doesn't show exact values of outliers
+Scatter Plot	Clearly highlights outliers	Not useful for large datasets
+```
 
