@@ -15,10 +15,21 @@ data = {'Value': [10, 12, 11, 13, 500, 15, 14, 13, 12, 11]}
 df = pd.DataFrame(data)
 
 # Compute Z-scores
-df['Z-score'] = (df['Value'] - df['Value'].mean()) / df['Value'].std()  `#Z = (X-𝜇)/σ`
+df['Z-score'] = (df['Value'] - df['Value'].mean()) / df['Value'].std()  #Z = (X-𝜇)/σ`
 
 # Filter outliers (Z-score > 3 or < -3)
-outliers_z = df[abs(df['Z-score']) > 3]
+outliers_z = df[abs(df['Z-score']) > 3] #∣Z∣>3, it's considered an **outlier**
 print(outliers_z)
+
+#Another way of `Z score`
+`we can apply Z score function`
+```python
+from scipy.stats import zscore
+z_score = df.apply(zscore) #df having dataframe
+outlier = (z_score.abs()>3).any(axis=1)
+outlier_ = df[outlier]
+print(outlier_)
+
+
 
 
