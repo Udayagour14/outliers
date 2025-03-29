@@ -19,8 +19,8 @@ df['Z-score'] = (df['Value'] - df['Value'].mean()) / df['Value'].std()  #Z = (X-
 
 # Filter outliers (Z-score > 3 or < -3)
 outliers_z = df[abs(df['Z-score']) > 3] #∣Z∣>3, it's considered an **outlier**
-print(outliers_z)
-```python
+print(outliers_z)])
+```
 
 #Another way of `Z score`
 `we can apply Z score function`
