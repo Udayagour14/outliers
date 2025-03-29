@@ -24,7 +24,7 @@ print(outliers_z)])
 
 #Another way of `Z score`
 `we can apply Z score function`
-```python
+```
 from scipy.stats import zscore
 z_score = df.apply(zscore) #df having dataframe
 outlier = (z_score.abs()>3).any(axis=1)
