@@ -51,8 +51,26 @@ upper_bound = Q3 + 1.5 * IQR
 outliers_iqr = df[(df['Value'] < lower_bound) | (df['Value'] > upper_bound)]
 print(outliers_iqr)
 ```
+## 3. Visualization Methods
+### a) Boxplot (Detect Outliers)
+```python
+import matplotlib.pyplot as plt
 
+plt.boxplot(df['Value'])
+plt.title("Boxplot for Outlier Detection")
+plt.show()
+```
 
+## b) Scatter Plot with Outliers Highlighted
+```python
+plt.scatter(range(len(df['Value'])), df['Value'], label="Data Points")
+plt.scatter(outliers_iqr.index, outliers_iqr['Value'], color='red', label="Outliers", marker='o')
+plt.xlabel("Index")
+plt.ylabel("Value")
+plt.legend()
+plt.title("Outliers in Data")
+plt.show()
+```
 
 
 
