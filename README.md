@@ -24,12 +24,34 @@ print(outliers_z)])
 
 #Another way of `Z score`
 `we can apply Z score function`
-```
+```python
 from scipy.stats import zscore
 z_score = df.apply(zscore) #df having dataframe
 outlier = (z_score.abs()>3).any(axis=1)
 outlier_ = df[outlier]
 print(outlier_)
+```
+## 2. IQR (Interquartile Range) Method
+`IQR is the range between Q1 (25th percentile) and Q3 (75th percentile).`
+
+**Formula:IQR=Q3−Q1**
+`Lower bound: Q1−1.5×IQR
+Upper bound: Q3+1.5×IQR`
+```python
+# Calculate Q1 and Q3
+Q1 = df['Value'].quantile(0.25)
+Q3 = df['Value'].quantile(0.75)
+IQR = Q3 - Q1
+
+# Define bounds
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+# Identify outliers
+outliers_iqr = df[(df['Value'] < lower_bound) | (df['Value'] > upper_bound)]
+print(outliers_iqr)
+```
+
 
 
 
